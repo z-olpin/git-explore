@@ -1,19 +1,11 @@
 {
     "configurations": [
-
         {
-            "name": "Start with debugging",
-            "port": 9229,
-            "request": "attach",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "restart": true,
-            "type": "pwa-node", 
-            "preLaunchTask": "Start container",
-            "postDebugTask": "Stop container",
-        },
-
-    
+            "command": "docker-compose -f docker-compose.debug.yml up",
+            "name": "Start server with debugging.",
+            "request": "launch",
+            "type": "node-terminal",
+            "postDebugTask": "Stop container"
+        }
     ]
 }

@@ -10,8 +10,9 @@ RUN echo =========DEBUG BUILD========= \
 && rm tokei.tar.gz \ 
 && mv ./tokei /bin/ \
 && npm install -g nodemon
-COPY code .
 
+WORKDIR /code
+VOLUME [ "/code" ]
 
 EXPOSE 3000
 CMD [ "npm", "start"]
