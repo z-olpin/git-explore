@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  git-explore:
+    container_name: git-explorer-container
+    build:
+      context: .
+      dockerfile: Dockerfile_debug
+    volumes:
+      - "./code:/code/app"
+    ports:
+      - "3000:3000"
+      - "9229:9229"

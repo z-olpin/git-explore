@@ -1,0 +1,19 @@
+{
+    "configurations": [
+
+        {
+            "name": "Start with debugging",
+            "port": 9229,
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "restart": true,
+            "type": "pwa-node", 
+            "preLaunchTask": "Start container",
+            "postDebugTask": "Stop container",
+        },
+
+    
+    ]
+}

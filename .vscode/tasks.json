@@ -1,0 +1,45 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+
+			"label": "Start container",
+			"type": "shell",
+			"command": "docker-compose -f docker-compose.debug.yml up",
+			"windows": {
+			//windows specfic
+			},
+			"group": "test",
+			"isBackground": true,
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared"
+			},
+		},
+		{
+			"label": "Stop container",
+			"type": "shell",
+			"command": "docker-compose -f docker-compose.debug.yml down",
+			"group": "test",
+			"problemMatcher": [
+				{
+				  "pattern": [
+					{
+					  "regexp": ".",
+					  "file": 1,
+					  "location": 2,
+					  "message": 3
+					}
+				  ],
+				  "background": {
+					"activeOnStart": true,
+					"beginsPattern": ".",
+					"endsPattern": ".",
+				  }
+				}
+			  ]
+
+		}
+
+	]
+}
