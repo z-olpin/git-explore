@@ -1,0 +1,8 @@
+td, th {
+  font-family: monospace;
+  padding: 0.5em;
+}
+
+th {
+  font-weight: 700;
+}
