@@ -12,8 +12,8 @@ const cloneRepo = (gitUrl) => {
   return success;
 }
 
-const runCloc = (repoPath) => {
-  const output = execSync(`cloc ${process.cwd()}/${repoPath}`, (err, stdout, stderror) => {
+const runScc = (repoPath) => {
+  const output = execSync(`scc ${process.cwd()}/${repoPath}`, (err, stdout, stderror) => {
     if (err) return err.message;
     if (stderror) return stderror;
     return stdout;
@@ -32,7 +32,7 @@ server.post('/analyze', (req, res) => {
   const { gitUrl } = req.body;
   const repoName = gitUrl.match(/\/([\w\-\_\d]*).git$/)[1];
   if (cloneRepo(gitUrl)){
-    res.send(runCloc(repoName));
+    res.send(runScc(repoName));
   } else {
     res.status(500).json({message: "Something went wrong."});
   }
