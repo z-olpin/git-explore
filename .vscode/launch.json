@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "command": "docker-compose -f docker-compose.debug.yml up",
+            "name": "Start server with debugging.",
+            "request": "launch",
+            "type": "node-terminal",
+            "postDebugTask": "Stop container"
+        }
+    ]
+}
