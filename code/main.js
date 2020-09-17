@@ -4,7 +4,7 @@ const { execSync } = require("child_process")
 const path = require("path")
 const fs = require("fs")
 
-// TODO make all this async.
+// TODO error handling and attention to security
 
 // Temporarily hard coded
 const PORT = "5000"
@@ -19,8 +19,6 @@ const cloneRepo = (gitUrl) => {
 }
 
 const runTokei = (repoPath) => {
-  // obviously a security issue currently. Must validate
-  // user input and isolate appropriately.
   const output = execSync(
     `tokei -o json ${process.cwd()}/${repoPath}`,
     (err, stdout, stderror) => {
@@ -37,9 +35,9 @@ server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
 server.post("/analyze", (req, res) => {
-  const { gitUrl } = req.body
+  const gitUrl = req.body.gitUrl.replace(/[^a-zA-Z0-9/_\.\-:]/g, '')
   const repoName = gitUrl.match(/\/([\w\-\_\d]*).git$/)[1]
-  if (cloneRepo(gitUrl)) {
+  if (repoName && cloneRepo(gitUrl)) {
     res.send(runTokei(repoName))
   } else {
     res.status(500).json({ message: "Something went wrong." })
