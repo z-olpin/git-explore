@@ -11,7 +11,7 @@ const PORT = "5000"
 
 // Super disk / cpu / network intensive.
 const cloneRepo = (gitUrl) => {
-  const success = execSync(`git clone ${gitUrl}`, (err, stdout, stderror) => {
+  const success = execSync(`git clone --depth 1 ${gitUrl}`, (err, stdout, stderror) => {
     if (err || stderror) return false
     return true
   })
