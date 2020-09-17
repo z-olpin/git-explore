@@ -4,8 +4,12 @@ const { execSync } = require("child_process")
 const path = require("path")
 const fs = require("fs")
 
+// TODO make all this async.
+
+// Temporarily hard coded
 const PORT = "5000"
 
+// Super disk / cpu / network intensive.
 const cloneRepo = (gitUrl) => {
   const success = execSync(`git clone ${gitUrl}`, (err, stdout, stderror) => {
     if (err || stderror) return false
@@ -15,6 +19,8 @@ const cloneRepo = (gitUrl) => {
 }
 
 const runTokei = (repoPath) => {
+  // obviously a security issue currently. Must validate
+  // user input and isolate appropriately.
   const output = execSync(
     `tokei -o json ${process.cwd()}/${repoPath}`,
     (err, stdout, stderror) => {
@@ -38,6 +44,7 @@ server.post("/analyze", (req, res) => {
   } else {
     res.status(500).json({ message: "Something went wrong." })
   }
+  // TODO
   fs.rmdir(repoName, { recursive: true }, (err) => {
     if (err) throw err
   })
