@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --inspect=0.0.0.0 ./main.js"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vxxce/git-explore.git"
@@ -14,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/vxxce/git-explore/issues"
   },
-  "homepage": "https://github.com/vxxce/git-explore#readme"
+  "homepage": "https://github.com/vxxce/git-explore#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ws": "^7.3.1"
+  }
 }
