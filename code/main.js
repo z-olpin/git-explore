@@ -7,12 +7,6 @@ import express from 'express';
 
 const PORT = 3000;
 
-// for ssl
-// const server = https.createServer({
-//     cert: fs.readFileSync('/path/to/cert.pem'),
-//     key: fs.readFileSync('/path/to/key.pem')
-//   });
-
 const app = express();
 app.use('/static', express.static('static')) //path should look like http://localhost:3000/static/css/style.css
 app.get('/', (req, res) => {
