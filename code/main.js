@@ -1,7 +1,10 @@
-console.log("starting app");
-let counter = 0
-setInterval(() => {
-    console.log(counter+=1);
-}, 1000);
+import express from 'express';
 
+const PORT = 3000;
 
+const app = express();
+
+// Middleware for static directory.
+app.use(express.static("static"));
+
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}...`));
