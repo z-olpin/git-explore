@@ -34,3 +34,6 @@ const makeTable = (analysis) => {
 }
 
 document.querySelector('button').addEventListener('click', getAnalysis)
+document.querySelector('input').addEventListener('keypress', (e) => {
+  if (e.key == "Enter") getAnalysis()
+})
