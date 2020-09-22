@@ -30,6 +30,13 @@ const tokei = async (repoPath) => {
     return JSON.parse(stdout)
 }
 
+const cleanUp = async (path) => {
+  await fs.rmdir(path, {recursive: true}, (e) => {
+    if (e) console.error(e) 
+  })
+  return
+}
+
 /*****************************************
  *               ROUTES                  *
  *****************************************/
@@ -43,6 +50,8 @@ server.post("/analyze", async (req, res) => {
   const analysis = await tokei(repoName)
     .catch(e => console.error(e))
   res.json(analysis)
+  await cleanUp(repoName)
+  return
 })
 
 server.listen(PORT, () => console.log(`Server is running at ${PORT}...`))
