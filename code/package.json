@@ -5,9 +5,9 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect=0.0.0.0 ./main.js"
+    "start": "node --inspect=0.0.0.0 ./main.js"
   },
-  "type": "module",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vxxce/git-explore.git"
