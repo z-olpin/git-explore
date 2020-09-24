@@ -1,0 +1,34 @@
+:root {
+  font-size: 22px;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+}
+
+button, input[type="text"] {
+  font-size: inherit
+}
+
+input[type="text"] {
+  width: 15em;
+}
+
+table {
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+td, th {
+  font-family: monospace;
+  padding: 0.5em;
+}
+
+th {
+  border-bottom: 4px solid black;
+}
+
+th {
+  font-weight: 700;
+}
