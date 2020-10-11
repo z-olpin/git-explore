@@ -13,8 +13,8 @@ server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
 // Clones a repository to the process's cwd
-const clone = async (gitUrl) => {
-  await execFile("git", ["clone", "--depth=1", gitUrl]).catch((e) => {
+const clone = async (gitUrl, repoName) => {
+  await execFile("git", ["clone", "--depth=1", gitUrl, `clones/${repoName}`]).catch((e) => {
     throw e
   })
 }
@@ -43,8 +43,8 @@ const cleanUp = async (path) => {
 server.post("/analyze", async (req, res) => {
   const gitUrl = req.body.gitUrl.replace(/[^a-zA-Z0-9/_\.\-:]/g, "")
   const repoName = gitUrl.match(/\/([\w\-\_\d]*).git$/)[1]
-  await clone(gitUrl).catch((e) => console.error(e))
-  const analysis = await tokei(repoName).catch((e) => console.error(e))
+  await clone(gitUrl, repoName).catch((e) => console.error(e))
+  const analysis = await tokei(`clones/${repoName}`).catch((e) => console.error(e))
   res.json(analysis)
   await cleanUp(repoName)
 })
