@@ -1,1 +1,1 @@
- Analyze a git repo via a web interface :)
+ Analyze a git repo via a web interface :D
